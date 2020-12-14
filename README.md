@@ -1,6 +1,5 @@
 # appcode-yashwant
-Gui-tool for scripting
-Installation and run instruction.
+Gui-tool for Kotlin scripting 
 
 Instructions for building and running the gui-tool
 
