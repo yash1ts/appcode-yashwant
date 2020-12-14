@@ -7,6 +7,8 @@ import javafx.scene.text.Text
 import tornadofx.Controller
 import tornadofx.plusAssign
 import java.io.File
+import java.nio.file.Files
+import java.nio.file.Path
 
 class TopViewController : Controller() {
     var currFile = SimpleStringProperty("")
@@ -31,9 +33,9 @@ class TopViewController : Controller() {
     }
 
     private fun executeScript(script: String, textArea: Node?) {
-        val file = getTempScript(script)
-        runAsync { Compiler.startScript(file, textArea) } ui {
-            findLine(it.second, file, textArea)
+        if(Files.exists(Path.of(currFile.value)))
+        runAsync { Compiler.startScript(currFile.value, textArea) } ui {
+            findLine(it.second, currFile.value, textArea)
             fire(ScriptComplete(it.first))
         }
     }

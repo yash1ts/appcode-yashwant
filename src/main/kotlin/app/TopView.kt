@@ -40,6 +40,9 @@ class TopView: View(){
             }
         }
         this+= editor.apply{
+            style{
+                minHeight = 200.px
+            }
             subscribe<MoveCursor> { result->
             val l = result.s.substringAfterLast(".kts:")
             val line = l.substringBefore(":").toInt()

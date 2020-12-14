@@ -13,16 +13,6 @@ fun saveFile(file:File,text:String) {
     }
 }
 
-fun getTempScript(fileContent:String) : String{
-    try {
-        val temp = Files.createTempFile("temp", ".kts")
-        saveFile(temp.toFile(), fileContent)
-        return temp.toString()
-    }catch (e: Throwable){
-        throwError(e)
-    }
-}
-
 fun throwError(e: Throwable): Nothing{
     throw IOException(e)
 }

@@ -3,6 +3,7 @@ import app.Constants.customPadding
 import javafx.geometry.Pos
 import javafx.scene.Node
 import javafx.scene.control.Button
+import javafx.scene.text.Text
 import javafx.scene.text.TextFlow
 import tornadofx.*
 
@@ -26,6 +27,7 @@ class BottomView : View() {
                 alignment = Pos.CENTER_LEFT
                 spacing = 10.px
             }
+            this+= Text("Save before run ")
             this += runButton.apply {
                 action {
                     isDisable = true
