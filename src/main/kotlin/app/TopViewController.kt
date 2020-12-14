@@ -16,7 +16,7 @@ class TopViewController : Controller() {
 
     init {
         subscribe<RunScriptRequest> { result ->
-            executeScript(editorText, result.textField)
+            executeScript( result.textField)
         }
     }
 
@@ -32,7 +32,7 @@ class TopViewController : Controller() {
         runAsync { saveFile(File(currFile.value), editorText) }
     }
 
-    private fun executeScript(script: String, textArea: Node?) {
+    private fun executeScript(textArea: Node?) {
         if(Files.exists(Path.of(currFile.value)))
         runAsync { Compiler.startScript(currFile.value, textArea) } ui {
             findLine(it.second, currFile.value, textArea)
